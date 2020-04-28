@@ -33,9 +33,11 @@ GLuint Shader::Create_Shader(const std::string& shader_text, GLuint type) {
 
 void Shader::bind() {
 	glUseProgram(prog);
+	texture.bind();
+	SendTextureUniform();
 }
 
-void Shader::Init(const std::string& shader_name) {
+void Shader::Init(const std::string& shader_name, const std::string& texture_file_name) {
 	prog = glCreateProgram();
 	shaders[0] = Create_Shader(Read_Shader("shaders/" + shader_name + ".vs"), GL_VERTEX_SHADER);
 	shaders[1] = Create_Shader(Read_Shader("shaders/" + shader_name + ".fs"), GL_FRAGMENT_SHADER);
@@ -53,6 +55,7 @@ void Shader::Init(const std::string& shader_name) {
 		printf("%s\n", log);
 		delete log;
 	}
+	texture.Init(texture_file_name);
 }
 
 void Shader::ShatUp() {
@@ -61,4 +64,8 @@ void Shader::ShatUp() {
 	}
 
 	glDeleteProgram(prog);
+}
+
+void Shader::SendTextureUniform() {
+	glUniform1i(glGetUniformLocation(prog, "Texture"), 0);
 }
