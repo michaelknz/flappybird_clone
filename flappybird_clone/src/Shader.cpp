@@ -53,7 +53,7 @@ void Shader::Init(const std::string& shader_name, const std::string& texture_fil
 		GLsizei writen;
 		glGetProgramInfoLog(prog, loglen, &writen, log);
 		printf("%s\n", log);
-		delete log;
+		delete[] log;
 	}
 	texture.Init(texture_file_name);
 }
@@ -68,4 +68,10 @@ void Shader::ShatUp() {
 
 void Shader::SendTextureUniform() {
 	glUniform1i(glGetUniformLocation(prog, "Texture"), 0);
+}
+
+void Shader::SendMatrices(glm::mat4 model, glm::mat4 view, glm::mat4 projection) {
+	glUniformMatrix4fv(glGetUniformLocation(prog, "model"), 1, GL_FALSE, glm::value_ptr(model));
+	glUniformMatrix4fv(glGetUniformLocation(prog, "view"), 1, GL_FALSE, glm::value_ptr(view));
+	glUniformMatrix4fv(glGetUniformLocation(prog, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
 }
