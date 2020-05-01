@@ -19,7 +19,7 @@ void Player::Init(int width, int height) {
 		0.035f, -0.075f, 0.0f, 1.0f, 0.0f
 	};
 
-	speed = 2.5f;
+	speed = 1.7f;
 	accseleration = 8.0f;
 	start_y = 0;
 
@@ -35,6 +35,7 @@ void Player::Init(int width, int height) {
 	CameraPos = glm::vec3(0.0f, 0.0f, 2.0f);
 	CameraView = glm::vec3(0.0f, 0.0f, -1.0f);
 	CameraUp = glm::vec3(0.0f, 1.0f, 0.0f);
+
 
 	model_start = glm::rotate(model_start, glm::radians(-90.0f), glm::vec3(0.0f, 0.0f, 1.0f));
 	view = glm::lookAt(CameraPos, CameraPos + CameraView, CameraUp);

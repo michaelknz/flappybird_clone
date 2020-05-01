@@ -55,7 +55,9 @@ void Shader::Init(const std::string& shader_name, const std::string& texture_fil
 		printf("%s\n", log);
 		delete[] log;
 	}
-	texture.Init(texture_file_name);
+	if (texture_file_name.c_str() != "NULL") {
+		texture.Init(texture_file_name);
+	}
 }
 
 void Shader::ShatUp() {

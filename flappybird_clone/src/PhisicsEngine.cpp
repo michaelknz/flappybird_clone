@@ -25,6 +25,12 @@ void PhisicsEngine::Update(unsigned int del_time) {
 
 glm::mat4 PhisicsEngine::CreateModel(unsigned int del_time) {
 	y_pos += cur_speed * (float(del_time) / 1000.0f);
+	if (y_pos <= -0.8f) {
+		y_pos = -0.8f;
+	}
+	if (y_pos >= 0.8f) {
+		y_pos = 0.8f;
+	}
 	float angle = 90.0f * (cur_speed / max_speed);
 	if (angle <= -90.0f) {
 		angle = -90.0f;

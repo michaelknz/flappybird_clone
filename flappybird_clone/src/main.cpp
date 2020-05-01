@@ -1,5 +1,6 @@
 #include "Display.h"
 #include "Player.h"
+#include "Field.h"
 
 int main(int argc, char** argv) {
 	SDL_Event Event;
@@ -9,7 +10,9 @@ int main(int argc, char** argv) {
 
 	Display display(width, height, title);
 	Player player;
+	Field field;
 	player.Init(width, height);
+	field.Init();
 
 	unsigned int last_time;
 	unsigned int cur_time;
@@ -34,6 +37,8 @@ int main(int argc, char** argv) {
 		cur_time = SDL_GetTicks();
 		player.Update(cur_time - last_time);
 		player.Draw();
+		field.Draw();
+		field.Update(cur_time - last_time);
 		display.Swap();
 		last_time = cur_time;
 	}

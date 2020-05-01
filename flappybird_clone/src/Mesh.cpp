@@ -28,7 +28,7 @@ void Mesh::Init(float* VertexBuf, unsigned int size, unsigned int line_size) {
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, line_size * sizeof(float), 0);
 	glEnableVertexAttribArray(0);
 
-	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, line_size * sizeof(float), (GLvoid*)(3 * sizeof(float)));
+	glVertexAttribPointer(1, line_size-3, GL_FLOAT, GL_FALSE, line_size * sizeof(float), (GLvoid*)(3 * sizeof(float)));
 	glEnableVertexAttribArray(1);
 
 	glBindVertexArray(0);
