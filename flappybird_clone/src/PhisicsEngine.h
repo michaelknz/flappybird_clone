@@ -3,7 +3,6 @@
 #include <gtc/matrix_transform.hpp>
 #include <gtc/type_ptr.hpp>
 #include <SDL.h>
-#include <cmath>
 
 class PhisicsEngine
 {

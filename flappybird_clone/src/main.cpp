@@ -44,6 +44,7 @@ int main(int argc, char** argv) {
 	}
 
 	player.ShatUp();
+	field.ShatUp();
 
 	return 0;
 }
