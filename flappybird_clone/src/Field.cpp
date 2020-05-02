@@ -24,8 +24,10 @@ void Field::Init() {
 		float del_value = RandFloat(0.4f);
 		cur_vertices_up = SetVerticesUp(del_value);
 		cur_vertices_down = SetVerticesDown(del_value);
-		ob.up.Init(&cur_vertices_up[0], 6 * 6, 6);
-		ob.down.Init(&cur_vertices_down[0], 6 * 6, 6);
+		ob.vertices_up = cur_vertices_up;
+		ob.vertices_down = cur_vertices_down;
+		ob.up.Init(&ob.vertices_up[0], 6 * 6, 6);
+		ob.down.Init(&ob.vertices_down[0], 6 * 6, 6);
 		ob.pos = glm::vec3(i, 0.0f, 0.0f);
 		obstacles.push_back(ob);
 		i += dist;
@@ -54,8 +56,10 @@ void Field::CheckIsOut() {
 		float del_value = RandFloat(0.4f);
 		cur_vertices_up = SetVerticesUp(del_value);
 		cur_vertices_down = SetVerticesDown(del_value);
-		ob.up.Init(&cur_vertices_up[0], 6 * 6, 6);
-		ob.down.Init(&cur_vertices_down[0], 6 * 6, 6);
+		ob.vertices_up = cur_vertices_up;
+		ob.vertices_down = cur_vertices_down;
+		ob.up.Init(&ob.vertices_up[0], 6 * 6, 6);
+		ob.down.Init(&ob.vertices_down[0], 6 * 6, 6);
 		ob.pos = (*(obstacles.end() - 1)).pos;
 		ob.pos.x += dist;
 		obstacles.push_back(ob);
@@ -123,4 +127,8 @@ void Field::ShatUp() {
 		obstacles[i].down.ShatUp();
 	}
 	field_shader.ShatUp();
+}
+
+std::vector<Obstacle> Field::GetObstacles() {
+	return obstacles;
 }

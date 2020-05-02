@@ -9,6 +9,8 @@ struct Obstacle {
 	Mesh up;
 	Mesh down;
 	glm::vec3 pos;
+	std::vector<float> vertices_up;
+	std::vector<float> vertices_down;
 };
 
 class Field
@@ -25,6 +27,7 @@ public:
 	std::vector<float> SetVerticesUp(float del_value);
 	std::vector<float> SetVerticesDown(float del_value);
 	void SetVerticesDefault();
+	std::vector<Obstacle> GetObstacles();
 private:
 	Shader field_shader;
 	std::vector<float> vertices_up;

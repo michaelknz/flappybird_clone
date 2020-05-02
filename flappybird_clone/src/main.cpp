@@ -40,6 +40,9 @@ int main(int argc, char** argv) {
 		field.Draw();
 		field.Update(cur_time - last_time);
 		display.Swap();
+		if (PhisicsEngine::CoolisionDetection(field.GetObstacles(), player.GetPlayerVert(), player.GetModel(), player.GetView(), player.GetProjection())) {
+			break;
+		}
 		last_time = cur_time;
 	}
 

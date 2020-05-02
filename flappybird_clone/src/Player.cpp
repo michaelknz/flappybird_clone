@@ -65,3 +65,19 @@ void Player::Update(unsigned int del_time) {
 	player_shader.bind();
 	player_shader.SendMatrices(model * model_start, view, projection);
 }
+
+std::vector<float> Player::GetPlayerVert() {
+	return vertices;
+}
+
+glm::mat4 Player::GetModel() {
+	return model * model_start;
+}
+
+glm::mat4 Player::GetView() {
+	return view;
+}
+
+glm::mat4 Player::GetProjection() {
+	return projection;
+}

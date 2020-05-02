@@ -14,6 +14,10 @@ public:
 	void Draw();
 	void Jump();
 	void Update(unsigned int del_time);
+	std::vector<float> GetPlayerVert();
+	glm::mat4 GetModel();
+	glm::mat4 GetView();
+	glm::mat4 GetProjection();
 private:
 	std::vector<float> vertices;
 	Mesh player_quad;

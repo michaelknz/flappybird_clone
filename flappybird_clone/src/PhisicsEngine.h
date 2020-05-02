@@ -3,6 +3,8 @@
 #include <gtc/matrix_transform.hpp>
 #include <gtc/type_ptr.hpp>
 #include <SDL.h>
+#include <vector>
+#include "Field.h"
 
 class PhisicsEngine
 {
@@ -13,6 +15,7 @@ public:
 	void Jump();
 	glm::mat4 CreateModel(unsigned int del_time);
 	void Update(unsigned int del_time);
+	static bool CoolisionDetection(std::vector<Obstacle> obstacles, std::vector<float> player_vert, glm::mat4 model,glm::mat4 view, glm::mat4 projection);
 private:
 	float max_speed;
 	float acceleration;
