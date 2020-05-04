@@ -40,7 +40,7 @@ void Shader::bind() {
 void Shader::Init(const std::string& shader_name, const std::string& texture_file_name) {
 	prog = glCreateProgram();
 	shaders[0] = Create_Shader(Read_Shader("shaders/" + shader_name + ".vs"), GL_VERTEX_SHADER);
-	shaders[1] = Create_Shader(Read_Shader("shaders/" + shader_name + ".fs"), GL_FRAGMENT_SHADER);
+	shaders[1] = Create_Shader(Read_Shader("shaders/" + shader_name + ".frags"), GL_FRAGMENT_SHADER);
 
 	for (int i = 0; i < 2; ++i) {
 		glAttachShader(prog, shaders[i]);

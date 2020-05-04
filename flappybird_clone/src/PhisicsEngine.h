@@ -16,10 +16,13 @@ public:
 	glm::mat4 CreateModel(unsigned int del_time);
 	void Update(unsigned int del_time);
 	static bool CoolisionDetection(std::vector<Obstacle> obstacles, std::vector<float> player_vert, glm::mat4 model,glm::mat4 view, glm::mat4 projection);
+	float GetPos();
+	float GetAngle();
 private:
 	float max_speed;
 	float acceleration;
 	float cur_speed;
 	float y_pos;
+	float last_angle;
 };
 

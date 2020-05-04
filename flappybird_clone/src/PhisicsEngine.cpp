@@ -32,6 +32,7 @@ glm::mat4 PhisicsEngine::CreateModel(unsigned int del_time) {
 		y_pos = 0.8f;
 	}
 	float angle = 90.0f * (cur_speed / max_speed);
+	last_angle = angle;
 	if (angle <= -90.0f) {
 		angle = -90.0f;
 	}
@@ -96,4 +97,12 @@ bool PhisicsEngine::CoolisionDetection(std::vector<Obstacle> obstacles, std::vec
 		}
 	}
 	return false;
+}
+
+float PhisicsEngine::GetPos() {
+	return y_pos;
+}
+
+float PhisicsEngine::GetAngle() {
+	return last_angle;
 }

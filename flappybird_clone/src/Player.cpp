@@ -81,3 +81,7 @@ glm::mat4 Player::GetView() {
 glm::mat4 Player::GetProjection() {
 	return projection;
 }
+
+PhisicsEngine Player::GetPhisics() {
+	return phisics;
+}

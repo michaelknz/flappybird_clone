@@ -18,6 +18,7 @@ public:
 	glm::mat4 GetModel();
 	glm::mat4 GetView();
 	glm::mat4 GetProjection();
+	PhisicsEngine GetPhisics();
 private:
 	std::vector<float> vertices;
 	Mesh player_quad;
