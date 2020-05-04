@@ -22,7 +22,7 @@ int main(int argc, char** argv) {
 	cur_time = SDL_GetTicks();
 	last_time = cur_time;
 
-	glm::vec3 spawn_pos_s = glm::vec3(player.GetPlayerVert()[0], player.GetPlayerVert()[1], player.GetPlayerVert()[2]);
+	glm::vec3 spawn_pos_s = glm::vec3(player.GetPlayerVert()[0]+0.01f, player.GetPlayerVert()[1], player.GetPlayerVert()[2]);
 
 	particle_system.Init(spawn_pos_s, player.GetModel());
 
@@ -47,10 +47,9 @@ int main(int argc, char** argv) {
 		field.Update(cur_time - last_time);
 
 		glm::mat4 cur_model = glm::mat4(1.0f);
-		cur_model = glm::translate(cur_model, glm::vec3(0.0f, player.GetPhisics().GetPos(), 0.0f));
+		glm::vec3 cur_spawn_pos_s = glm::vec3(player.GetModel() * glm::vec4(spawn_pos_s, 1.0f));
 		cur_model = glm::rotate(cur_model, glm::radians(player.GetPhisics().GetAngle()), glm::vec3(0.0f, 0.0f, 1.0f));
-		glm::vec3 cur_spawn_pos_s = glm::vec3(cur_model * glm::vec4(spawn_pos_s, 1.0f));
-		particle_system.Update(cur_spawn_pos_s, player.GetModel());
+		particle_system.Update(cur_spawn_pos_s,cur_model);
 
 		display.Swap();
 		if (PhisicsEngine::CoolisionDetection(field.GetObstacles(), player.GetPlayerVert(), player.GetModel(), player.GetView(), player.GetProjection())) {

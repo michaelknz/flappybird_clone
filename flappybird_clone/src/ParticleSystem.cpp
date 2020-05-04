@@ -15,7 +15,7 @@ void ParticleSystem::Init(glm::vec3 spawn_pos, glm::mat4 model) {
 	smoke_color = glm::vec3(0.5f, 0.5f, 0.5f);
 	start_life_time = 5.0f;
 	smoke_velocity = 0.5f;
-	smoke_del_time = 100;
+	smoke_del_time = 50;
 	start_life_time = 2500;
 	particle_shader.Init("particle_shader", "NULL");
 
@@ -39,7 +39,12 @@ void ParticleSystem::Emmit(unsigned int cur_time, glm::vec3 spawn_pos, glm::mat4
 	}
 	else if (particle.direction.x >= 0) {
 		glm::mat4 rotate = glm::mat4(1.0f);
-		rotate = glm::rotate(rotate, glm::radians(15.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+		if (particle.direction.y > 0) {
+			rotate = glm::rotate(rotate, glm::radians(15.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+		}
+		else {
+			rotate = glm::rotate(rotate, glm::radians(-15.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+		}
 		particle.direction = glm::vec3(rotate * glm::vec4(particle.direction, 1.0f));
 	}
 	particle.last_time = (int)cur_time;
